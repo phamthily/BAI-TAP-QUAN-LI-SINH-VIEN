@@ -285,11 +285,12 @@ void List:: menu(){
 	KhoitaoList(l);
 	input(l);
 	Show(l);
-	
 	sapxepdtl(l);
 	sapxepten(l);
 	timkiemten(l);
 	timkiemid(l);
+	SapXepTheoDRL(l);
+	TimKiemSinhVienChungNganh(l);
 	return ;
 }
 
