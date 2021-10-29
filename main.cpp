@@ -1,12 +1,21 @@
-
+#include<string.h>
 #include "Sinhvien.h"
 #include<iostream>
 using namespace std;
 int main(){
-	Sinhvien s;
-//	s.nhap();
-//	s.in();
-	s.nhaps();
-	s.ins();
+	int n;
+	Sinhvien a[100];
+List l;
+l.menu();
+
+///Show(l);
+//KhoitaoList(l);
+	
+//	s= new Sinhvien[n];
+	
+	
+	
+
+	system("pause");
 	return 0;
 }
