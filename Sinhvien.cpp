@@ -163,6 +163,33 @@ void List::sapxepten(List l){
 	}cout<<"Danh sach sinh vien da sap xep theo diem tich luy "<<endl;
      Show(l);
 }
+void List::SapXepTheoDRL(List l){
+	for(Node *p=l.head;p!=NULL;p=p->Next){
+	    for(Node *q=p->Next;q;q=q->Next){
+		    if(p->data.getdrl()<q->data.getdrl()){
+			    hoanvi(p->data,q->data);
+			}
+		}				
+	}cout<<"Danh sach sinh vien da sap xep theo diem ren luyen  "<<endl;
+     Show(l);
+}
+void List::TimKiemSinhVienChungNganh(List l){
+	string nganh;
+    
+    cout<<"Nhap nganh hoc can tim :";
+    cin>>nganh;
+    for(Node *p=l.head;p!=NULL;p=p->Next){
+    	if((nganh==p->data.getnganh())){
+    	    ins(p->data);
+    	    }
+		else if(p==NULL)
+		   	cout<<"danh sach cua ban rong!"<<endl;
+		else 
+		    cout<<"Khong tim thay sinh vien nao cung nganh !"<<endl;
+    	
+    }
+	
+}
 void Diem::xeploai() {
 	if(drl>=90 && dtl>=3.2)
 	    cout<<"Xep loai xuat sac ";
