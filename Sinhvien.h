@@ -65,6 +65,8 @@ void sapxepdtl(List l);
 void sapxepten(List l);
 void timkiemten(List l);
 void timkiemid(List l);
+void SapXepTheoDRL(List l);
+void TimKiemSinhVienChungNganh(List l);
 void  addhead(List &l, Node *p);
 void addtail(List &l,Node *p);
 void menu();
