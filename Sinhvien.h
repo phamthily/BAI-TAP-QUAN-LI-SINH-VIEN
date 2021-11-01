@@ -69,6 +69,8 @@ void SapXepTheoDRL(List l);
 void TimKiemSinhVienChungNganh(List l);
 void  addhead(List &l, Node *p);
 void addtail(List &l,Node *p);
+void xoatheoID(List l);
+void xoatheoten(List l);
 void menu();
 };
 

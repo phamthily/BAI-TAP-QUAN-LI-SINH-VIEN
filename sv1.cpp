@@ -298,6 +298,9 @@ void List:: menu(){
 //	update(l);
 	
 	themsv(l);
+	xoatheoID(l);
+	xoatheoten(l);
 	return ;
+
 }
 
