@@ -627,15 +627,27 @@ void List::Xoa(List l){
 void List:: menu(){
 	List l;
 	Sinhvien sv;
-	int n;
-	
+	Node*p=l.head;
 	KhoitaoList(l);
 	ifstream filein;
 	ofstream fileout;
 	
-	
-        fileout.open("SINHVIEN1.TXT",ios::out);
 	filein.open("SINHVIEN.TXT",ios::in);
+    fileout.open("SINHVIEN1.TXT",ios::out);
+		int key,t=1;
+	while(t){ 
+		system("cls");
+		cout <<"\n\n"  ;  
+cout<<setw(130)<<right<<"        @@@@@@.       @@@@@@                  @@@@@@  @@@@@@                 "<<"\n";            
+cout<<setw(130)<<right<<"      /@@@@@,       @@@@@@                  @@@@@@  @@@@@@                   "<<"\n";         
+cout<<setw(130)<<right<<"      @@@@@,       *@@@@@                  @@@@@@  &@@@@@                    "<<"\n" ;          
+cout<<setw(130)<<right<<"     @@@@@@@@@@@@@@@@@@@     @@@@@@@@@@   ,@@@@@   @@@@@    @@@@@@@@@@       "<<"\n";      
+cout<<setw(130)<<right<<"    @@@@@@@@@@@@@@@@@@@   @@@@@   @@@@@#  @@@@@   @@@@@  /@@@@@@@@@@@@@      "<<"\n";        
+cout<<setw(130)<<right<<"   @@@@@@        @@@@@@  @@@@@@@@@@@@@@  @@@@@   @@@@@  @@@@@     @@@@@      "<<"\n";       
+cout<<setw(130)<<right<<"  @@@@@@        @@@@@@  @@@@@           @@@@@   @@@@@  @@@@@@    @@@@@       "<<"\n";      
+cout<<setw(130)<<right<<" @@@@@@        @@@@@@   @@@@@@@@@@@@.  @@@@@   @@@@@.  /@@@@@@@@@@@@         "<<"\n";      
+cout<<setw(130)<<right<<"@@@@@#       @@@@@@      @@@@@@@@.   @@@@@@  @@@@@@     (@@@@@@*             "<<"\n";        
+ cout <<"\n\n"  ;      
 	
 	
 	return ;
