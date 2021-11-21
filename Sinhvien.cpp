@@ -94,6 +94,14 @@ void Diem::ind(){
 	cout<<"Diem ren luyen: "<<drl<<endl;
 	cout<<"Diem tich luy:"<<dtl<<endl;
 }
+Diem::Diem(){
+	this->drl=0;
+	this->dtl=0;
+}
+Diem::~Diem(){
+    this->drl=0;
+	this->dtl=0;	
+}
 Sinhvien Sinhvien::nhaps(Sinhvien &sv){
 	
 	sv.nhap();
