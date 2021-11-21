@@ -54,3 +54,18 @@ class Diem {
 	    void Docfilediem(ifstream &filein , Diem &d);
 	    void Ghifilediem(ofstream &fileout,Diem d);
 };
+class Sinhvien:public Nguoi,public Diem{
+	private:
+		int ID;
+		string nganh;
+	public:
+		Sinhvien();
+		~Sinhvien();
+	   Sinhvien nhaps(Sinhvien &sv);
+	   Sinhvien  ins(Sinhvien sv);
+	   string getnganh();
+	   void hoanvi(Sinhvien &sv1,Sinhvien &sv2);
+	   int getid();
+	   void Docfilesv(ifstream &filein , Sinhvien &Sv);
+	   void Ghifilesv(ofstream &fileout,Sinhvien Sv);
+};
