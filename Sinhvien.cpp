@@ -16,7 +16,7 @@ void Ngaysinh:: nhapns(){
 	cin>>nam;
 }
 void Ngaysinh:: inns(){
-	cout<<"Ngay sinh :"<<ngay<<"/"<<thang<<"/"<<nam<<endl;
+	cout<<setw(2)<<left<<ngay<<"/"<<setw(2)<<left<<thang<<"/"<<setw(18)<<left<<nam;
 	
 }
 int Ngaysinh:: getter_Ngay(){
