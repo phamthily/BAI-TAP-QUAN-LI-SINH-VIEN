@@ -667,6 +667,15 @@ cout <<setw(105)<<right<<"CHUONG TRINH QUAN LY SINH VIEN C++\n";
         cout <<setw(115)<<right<< "******************************************************\n";
         cout <<setw(75)<<right<< "Nhap tuy chon: ";
         fflush(stdin);
+		cin >> key;
+        switch(key){
+            case 1:
+                cout << "\n1.Nhap danh sach sinh vien."<<endl;
+                input(l);
+                cout<<"Nhap danh sach thanh cong. "<<endl;
+                Show(l);
+                system("pause"); // lenh dung man hinh, thay cho press anykey
+                break;
 	
 	return ;
 }
