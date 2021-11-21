@@ -86,8 +86,7 @@ string Nguoi::getten(){
 
 void Diem::ind(){
 	
-	cout<<"Diem ren luyen: "<<drl<<endl;
-	cout<<"Diem tich luy:"<<dtl<<endl;
+	cout<<setw(23)<<left<<drl<<setw(17)<<left<<dtl;
 }
 Diem::Diem(){
 	this->drl=0;
