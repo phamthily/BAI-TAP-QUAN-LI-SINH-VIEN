@@ -122,6 +122,14 @@ Sinhvien Sinhvien::ins(Sinhvien sv){
 	cout<<"Nganh :"<<sv.nganh<<endl;
 	return sv;
 }
+Sinhvien::Sinhvien(){
+	this->ID=0;
+	this->nganh=" ";
+}
+Sinhvien::~Sinhvien(){
+	this->ID=0;
+	this->nganh=" ";
+}
 
 void  List::timkiemten(List l){
 	//Sinhvien x;
