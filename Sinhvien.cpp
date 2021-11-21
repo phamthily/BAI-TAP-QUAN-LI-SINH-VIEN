@@ -110,10 +110,8 @@ Sinhvien Sinhvien::nhaps(Sinhvien &sv){
 }
 Sinhvien Sinhvien::ins(Sinhvien sv){
 	sv.in();
-	sv.inns();
 	sv.ind();
-	cout<<"ID :"<<sv.ID<<endl;
-	cout<<"Nganh :"<<sv.nganh<<endl;
+	cout<<setw(10)<<left<<sv.ID<<setw(20)<<left<<sv.nganh;
 	return sv;
 }
 Sinhvien::Sinhvien(){
