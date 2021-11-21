@@ -1,4 +1,5 @@
 #include<string.h>
+#include<windows.h> 
 #include "Sinhvien.h"
 #include<iostream>
 using namespace std;
