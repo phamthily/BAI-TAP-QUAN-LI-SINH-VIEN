@@ -432,6 +432,13 @@ void List::GhiFile(ofstream &fileout, List l){
 			}
 		
 	}
+void List:: showNode(Node* k){
+	cout<<"----------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<setw(4)<<left<<"STT"<<setw(30)<<left<<"Ho va ten"<<setw(17)<<left<<"Que quan"<<setw(18)<<left<<"Gioi tinh"<<setw(14)<<left<<"Tuoi"<<setw(19)<<left<<"Ngay sinh"<<setw(23)<<left<<"Diem ren luyen"<<setw(22)<<left<<"Diem tich luy"<<setw(11)<<left<<"ID"<<setw(21)<<left<<"Nganh"<<endl;
+	cout<<"****************************************************************************************************************************************************************************"<<endl;
+	
+
+}
 		
 void List:: input(List &l){
 	Sinhvien x;
