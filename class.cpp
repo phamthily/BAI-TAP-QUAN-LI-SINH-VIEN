@@ -69,3 +69,7 @@ class Sinhvien:public Nguoi,public Diem{
 	   void Docfilesv(ifstream &filein , Sinhvien &Sv);
 	   void Ghifilesv(ofstream &fileout,Sinhvien Sv);
 };
+struct Node{
+	Sinhvien data;
+     struct Node *Next;
+};
