@@ -419,6 +419,55 @@ void List::SapXep(List l){
 	}
 	
 }
+void List::TimKiem(List l){
+	int t1=1,c;
+	Node*p=l.head;
+	while(t1){
+        cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(110)<<right<<"|                   MENU TIM KIEM               |"<<endl;
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(110)<<right<<"|                                               |"<<endl;
+		cout<<setw(110)<<right<<"|   1. Tim kiem sinh vien theo ten.             |"<<endl;
+		cout<<setw(110)<<right<<"|   2. Tim kiem sinh vien theo ID.              |"<<endl;
+		cout<<setw(110)<<right<<"|   3. Tim kiem sinh vien chung nganh.          |"<<endl;
+		cout<<setw(110)<<right<<"|   0. Nhan de thoat tim kiem sinh vien.        |"<<endl;
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(75)<<right<<"Nhap lua chon:";
+		cin>>c;
+		switch(c){
+			case 1:
+            	cout<<"\n1. Tim kiem sinh vien theo ten.   "<<endl;	
+                timkiemten(l);
+            	pressAnyKey();
+                break;
+            case 2:
+            	cout<<"\n2. Tim kiem sinh vien theo ID. "<<endl;	
+                timkiemid(l);
+            	pressAnyKey();
+                break;
+			case 3:
+            	cout<<"\n3. Tim kiem sinh vien chung nganh"<<endl;
+            	if(p == NULL){
+            		cout<<"Danh sach cua ban dang rong! "<<endl;		
+            	}
+            	else{	
+          			TimKiemSinhVienChungNganh(l);	
+            	}
+            	pressAnyKey();
+            	break;
+            case 0:
+                cout << "\nBan da chon thoat tuy chon!";
+                getch();
+                return ;
+			default:
+                cout << "\nKhong co chuc nang nay!";
+                cout << "\nHay chon chuc nang trong hop menu.";
+                pressAnyKey();
+                break;			
+		}
+	}
+	
+}
 void List:: menu(){
 	List l;
 	Sinhvien sv;
