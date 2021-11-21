@@ -130,6 +130,12 @@ Sinhvien::~Sinhvien(){
 	this->ID=0;
 	this->nganh=" ";
 }
+string Sinhvien::getnganh(){
+	return nganh; 
+}
+int Sinhvien:: getid(){
+    return ID;	
+}
 
 void  List::timkiemten(List l){
 	//Sinhvien x;
