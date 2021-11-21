@@ -570,6 +570,10 @@ void List:: menu(){
 	
 	KhoitaoList(l);
 	ifstream filein;
+	ofstream fileout;
+	
+	
+        fileout.open("SINHVIEN1.TXT",ios::out);
 	filein.open("SINHVIEN.TXT",ios::in);
 	
 	
