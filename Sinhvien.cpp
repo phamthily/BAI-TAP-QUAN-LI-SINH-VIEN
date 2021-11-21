@@ -480,6 +480,45 @@ void List::TimKiem(List l){
 	}
 	
 }
+void List::Xoa(List l){
+	int t1=1	,c;
+	Node*p=l.head;
+	while(t1){
+		
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(110)<<right<<"|                    MENU XOA                   |"<<endl;
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(110)<<right<<"|                                               |"<<endl;
+		cout<<setw(110)<<right<<"|   1. Xoa sinh vien theo ten.                  |"<<endl;
+		cout<<setw(110)<<right<<"|   2. Xoa sinh vien theo ID.                   |"<<endl;
+		cout<<setw(110)<<right<<"|   0. Thoat                                    |"<<endl;
+		cout<<setw(110)<<right<<"|                                               |"<<endl;
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(75)<<right<<"Nhap lua chon:";
+		cin>>c;
+		switch(c){
+			case 1:
+            	cout<<"\n1.	Xoa sinh vien theo ten.   "<<endl;	
+               	xoatheoten(l);
+            	pressAnyKey();
+                break;
+            case 2:
+            	cout<<"\n2. Xoa	sinh vien theo ID. "<<endl;	
+               	xoatheoID(l);
+            	pressAnyKey();
+                break;
+            case 0:
+                cout << "\nBan da chon thoat tuy chon!";
+                getch();
+                return ;
+			default:
+                cout << "\nKhong co chuc nang nay!";
+                cout << "\nHay chon chuc nang trong hop menu.";
+                pressAnyKey();
+                break;			
+		}
+	}
+}
 void List:: menu(){
 	List l;
 	Sinhvien sv;
