@@ -3,8 +3,9 @@
 #include<iostream>
 using namespace std;
 int main(){
+    system("color b0");
     List l;
     l.menu();
-	system("pause");
-	return 0;
+    system("pause");
+    return 0;
 }
