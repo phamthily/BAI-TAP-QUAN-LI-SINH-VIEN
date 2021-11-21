@@ -19,6 +19,30 @@ void Ngaysinh:: inns(){
 	cout<<"Ngay sinh :"<<ngay<<"/"<<thang<<"/"<<nam<<endl;
 	
 }
+int Ngaysinh:: getter_Ngay(){
+		   return ngay;
+}
+void Ngaysinh:: setter_Ngay( int ngay){
+		   this->ngay = ngay;
+}
+int Ngaysinh::getter_Thang(){
+		   return thang;
+}
+void Ngaysinh:: setter_Thang(int thang){
+		  this->thang = thang;
+}
+int Ngaysinh:: getter_Nam(){
+		   return nam;
+}
+void Ngaysinh::setter_Nam(int nam){
+		  this->nam = nam;
+}
+Ngaysinh::Ngaysinh(){
+	ngay=thang=nam=0;
+}
+Ngaysinh::~Ngaysinh(){
+    ngay=thang=nam=0;
+}
 void Nguoi::nhap(){
 	fflush(stdin);
 	cout<<"Nhap ho ten :";
