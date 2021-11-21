@@ -72,23 +72,7 @@ Sinhvien Sinhvien::ins(Sinhvien sv){
 	cout<<"Nganh :"<<sv.nganh<<endl;
 	return sv;
 }
-/*Sinhvien nhapds(Sinhvien a[],int &n){
 
-	cout<<"Nhap so luong sinh vien :";
-	cin>>n;
-	for(int i=0;i<n;i++){
-		cout<<"Nhap sinh vien thu :"<<i+1<<endl;
-		
-		a[i].nhaps();
-	}
-}
-Sinhvien inds(Sinhvien a[],int n){
-	
-	for(int i=0;i<n;i++){
-		cout<<"Thong tin sinh vien thu :"<<i+1<<endl;
-        a[i].ins();
-	}
-}*/
 void  List::timkiemten(List l){
 	//Sinhvien x;
     string ten;
@@ -107,7 +91,7 @@ void  List::timkiemten(List l){
     }
 }
 void  List::timkiemid(List l){
-	//Sinhvien x;
+	
     int id;
     
     cout<<"Nhap ID can tim :";
@@ -315,6 +299,34 @@ void Nguoi::Docfilenguoi(ifstream &filein , Nguoi  &ng){
 	getline(filein,ng.gt,',');
 	Docfilengaysinh(filein,ng);
 }
+void Diem::Docfilediem(ifstream &filein , Diem &d){
+	float drl;
+	filein>>d.drl;
+	filein.ignore(2);
+	float dtl;
+	filein>>d.dtl;
+}
+void Sinhvien::Docfilesv(ifstream &filein , Sinhvien &Sv){	
+	Docfilenguoi(filein,Sv);
+	filein.ignore(2);
+    Docfilediem(filein,Sv);
+    filein.ignore(2);
+    int ID;
+    filein>>Sv.ID;
+    filein.ignore(2);
+    getline(filein,Sv.nganh,'.');
+    string t;
+    getline(filein,t);	
+}
+void List::DocFile(ifstream &filein, List &l){
+	while(!filein.eof() ){
+	     Sinhvien sv;
+		 Docfilesv(filein, sv);
+		 Node *p=createNode(sv);
+		 addtail(l,p);
+		
+		 }	 
+	}
 void List:: input(List &l){
 	Sinhvien x;
 	int n;
@@ -474,16 +486,9 @@ void List:: menu(){
 	int n;
 	
 	KhoitaoList(l);
-	input(l);
-	Show(l);
-	sapxepdtl(l);
-	sapxepten(l);
-	timkiemten(l);
-	timkiemid(l);
-	SapXepTheoDRL(l);
-	TimKiemSinhVienChungNganh(l);
-	xoatheoten(l);
-	xoatheoID(l);
+	ifstream filein;
+	filein.open("SINHVIEN.TXT",ios::in);
+	
 	
 	return ;
 }
