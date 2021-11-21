@@ -103,7 +103,6 @@ class List:public Sinhvien{
        void Xoa(List l);
        void deleteList(List &l);
        void DocFile(ifstream &filein, List &l);
-	
        void GhiFile(ofstream &fileout,List l);
 
 };
