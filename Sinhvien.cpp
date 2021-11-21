@@ -647,7 +647,15 @@ cout<<setw(130)<<right<<"   @@@@@@        @@@@@@  @@@@@@@@@@@@@@  @@@@@   @@@@@ 
 cout<<setw(130)<<right<<"  @@@@@@        @@@@@@  @@@@@           @@@@@   @@@@@  @@@@@@    @@@@@       "<<"\n";      
 cout<<setw(130)<<right<<" @@@@@@        @@@@@@   @@@@@@@@@@@@.  @@@@@   @@@@@.  /@@@@@@@@@@@@         "<<"\n";      
 cout<<setw(130)<<right<<"@@@@@#       @@@@@@      @@@@@@@@.   @@@@@@  @@@@@@     (@@@@@@*             "<<"\n";        
- cout <<"\n\n"  ;      
+ cout <<"\n\n"  ;
+cout <<setw(105)<<right<<"CHUONG TRINH QUAN LY SINH VIEN C++\n";
+        cout <<setw(115)<<right<< "------------------------------------------------------\n";
+        cout <<setw(115)<<right<< "|                         MENU                       |\n";
+        cout <<setw(115)<<right<< "------------------------------------------------------\n";
+        cout <<setw(115)<<right<< "**                                                  **\n";
+        cout <<setw(115)<<right<< "**  1. Nhap danh sach sinh vien.                    **\n";
+        cout <<setw(115)<<right<< "**  2. Sap xep sinh vien.                           **\n";
+        cout <<setw(115)<<right<< "**  3. Tim kiem sinh vien.                          **\n";
 	
 	
 	return ;
