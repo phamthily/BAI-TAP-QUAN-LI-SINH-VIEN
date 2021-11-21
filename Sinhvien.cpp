@@ -448,21 +448,21 @@ void List:: input(List &l){
 }
 }
 void List::Show(List l){
-	
 	int n;
 	int i=1;
 	Sinhvien x;
-	cout<<"DANH SACH SINH VIEN "<<endl;
-	cout<<"******************************************"<<endl;
+	cout<<setw(100)<<"DANH SACH SINH VIEN "<<endl;
+	cout<<"----------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<setw(4)<<left<<"STT"<<setw(30)<<left<<"Ho va ten"<<setw(17)<<left<<"Que quan"<<setw(18)<<left<<"Gioi tinh"<<setw(14)<<left<<"Tuoi"<<setw(19)<<left<<"Ngay sinh"<<setw(23)<<left<<"Diem ren luyen"<<setw(22)<<left<<"Diem tich luy"<<setw(11)<<left<<"ID"<<setw(21)<<left<<"Nganh"<<endl;
+	cout<<"****************************************************************************************************************************************************************************"<<endl;
 	for(Node *p=l.head;p!=NULL;p=p->Next){
-		cout<<"Sinh vien thu :"<<i<<endl;
-	ins(p->data);
-	
-	if(p!=l.tail)
-	   cout<<"*------------------------------------"<<endl;
+	     cout<<setw(4)<<left<<i;ins(p->data);
+	     cout<<endl;
 	   i++;
 	}
-	cout<<"*******************************************"<<endl;
+
+	cout<<"****************************************************************************************************************************************************************************"<<endl;
+
 }
 void List:: showNode(Node* k){
 	Sinhvien x;
