@@ -39,3 +39,18 @@ class Nguoi:public Ngaysinh{
 		void Docfilenguoi(ifstream &filein , Nguoi  &ng);
 		void Ghifilenguoi(ofstream &fileout ,Nguoi ng);
 };
+class Diem {
+	private:
+	    float drl;
+	    float dtl;
+	public:
+		Diem();
+		~Diem();
+		void nhapd();
+		void ind();
+		float getdrl();
+		float getdtl();
+		void xeploai();
+	    void Docfilediem(ifstream &filein , Diem &d);
+	    void Ghifilediem(ofstream &fileout,Diem d);
+};
