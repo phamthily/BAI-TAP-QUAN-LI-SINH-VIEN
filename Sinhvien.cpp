@@ -676,6 +676,75 @@ cout <<setw(105)<<right<<"CHUONG TRINH QUAN LY SINH VIEN C++\n";
                 Show(l);
                 system("pause"); // lenh dung man hinh, thay cho press anykey
                 break;
+	    case 2:
+            	cout<<"\n2.Sap xep sinh vien."<<endl;
+            	SapXep(l);
+            	pressAnyKey();
+                break;
+          case 3:
+            	cout<<"\n3.Tim kiem sinh vien."<<endl;
+            	TimKiem(l);
+            	pressAnyKey();
+                break;
+            case 4:
+                cout<<"\n4. Them mot sinh vien vao danh sach. "<<endl;
+                if(p == NULL){
+            		cout <<"Danh sach hien dang rong!"<<endl;
+            		themsv(l);
+            	}
+				else{
+            		themsv(l);
+				}
+            	pressAnyKey();
+                break;
+            case 5:
+            	cout<<"\n5. Cap nhat sinh vien."<<endl;
+                update(l);	
+            	pressAnyKey();
+                break;
+		  case 6:
+				cout<<"\n6. Xoa sinh vien."<<endl;
+            	Xoa(l);
+            	pressAnyKey();
+            	break;
+            case 7:
+            	cout<<"\n7. Hien thi danh sach sinh vien. "<<endl;
+            	if(p == NULL){
+            		cout<<"Danh sach cua ban dang rong! "<<endl;
+            		
+            	}
+            	else{	
+            		Show(l);
+            	}		
+            	pressAnyKey();
+            	break;
+             case 8:
+            	cout<<"\n8. Doc file sinh vien tu file txt."<<endl;
+				DocFile(filein,l);
+				Show(l);
+            	pressAnyKey();
+            	break;
+            case 9:
+                cout<<"\n9. Ghi file sinh vien."<<endl;
+                GhiFile(fileout,l);
+                cout<<"Ghi file thanh cong";
+            	pressAnyKey();
+            	break;
+            case 0:
+                cout << "\nBan da chon thoat chuong trinh!";
+                getch();
+                return ;
+            default:
+                cout << "\nKhong co chuc nang nay!";
+                cout << "\nHay chon chuc nang trong hop menu.";
+                pressAnyKey();
+                break;
+        }
+    }
+    
+filein.close();
+fileout.close();
+}
 	
 	return ;
 }
