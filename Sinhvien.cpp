@@ -356,6 +356,50 @@ void List:: addtail(List &l,Node *p)
         l.tail=p;
     }
 }
+void List::SapXep(List l){
+	
+	int t1=1	,c;
+	while(t1){
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(110)<<right<<"|                   MENU SAP XEP                |"<<endl;
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(110)<<right<<"|                                               |"<<endl;
+		cout<<setw(110)<<right<<"|   1. Sap xep sinh vien theo ten.              |"<<endl;
+		cout<<setw(110)<<right<<"|   2. Sap xep sinh vien theo diem tich luy.    |"<<endl;
+		cout<<setw(110)<<right<<"|   3. Sap xep sinh vien theo diem ren luyen.   |"<<endl;
+		cout<<setw(110)<<right<<"|                                               |"<<endl;
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(75)<<right<<"Nhap lua chon:";
+		cin>>c;
+		switch(c){
+			case 1:
+			cout<<"\n1 .Danh sach sinh vien sap xep sinh vien theo ten "<<endl;
+            	sapxepten(l);
+            	pressAnyKey();
+                break;
+			case 2:
+            	cout<<"\n2. Danh sach sinh vien sap xep sinh vien theo diem tich luy. "<<endl;
+            	sapxepdtl(l);
+            	pressAnyKey();
+                break;
+			case 3:
+				cout<<"\n3. Sap xep sinh vien theo diem ren luyen."<<endl;
+            	SapXepTheoDRL(l); 
+            	pressAnyKey();
+            	break;
+            case 0:
+                cout << "\nBan da chon thoat tuy chon!";
+                getch();
+                return ;
+			default:
+                cout << "\nKhong co chuc nang nay!";
+                cout << "\nHay chon chuc nang trong hop menu.";
+                pressAnyKey();
+                break;			
+		}
+	}
+	
+}
 void List:: menu(){
 	List l;
 	Sinhvien sv;
