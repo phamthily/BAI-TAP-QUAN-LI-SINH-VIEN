@@ -320,6 +320,10 @@ void Diem::Docfilediem(ifstream &filein , Diem &d){
 	float dtl;
 	filein>>d.dtl;
 }
+void Diem::Ghifilediem(ofstream &fileout, Diem d){
+	fileout <<setw(5)<<right<<d.drl<<"|" ;
+	fileout<<setw(5)<<right<<d.dtl<<"|";
+}
 void Sinhvien::Docfilesv(ifstream &filein , Sinhvien &Sv){	
 	Docfilenguoi(filein,Sv);
 	filein.ignore(2);
@@ -332,6 +336,11 @@ void Sinhvien::Docfilesv(ifstream &filein , Sinhvien &Sv){
     string t;
     getline(filein,t);	
 }
+void Sinhvien::Ghifilesv(ofstream &fileout, Sinhvien Sv){
+	Ghifilenguoi(fileout, Sv);
+	Ghifilediem(fileout, Sv);
+	fileout <<setw(5)<<right<< Sv.ID <<"|" <<setw(9)<<Sv.nganh<<"|";
+	
 void List::DocFile(ifstream &filein, List &l){
 	while(!filein.eof() ){
 	     Sinhvien sv;
@@ -341,6 +350,27 @@ void List::DocFile(ifstream &filein, List &l){
 		
 		 }	 
 	}
+
+void List::GhiFile(ofstream &fileout, List l){
+	fileout<<"\n";
+	fileout<<setw(56)<<"DANH SACH SINH VIEN"<<"\n";
+	fileout<<" ----------------------------------------------------------------------------------------------"<<"\n";
+   fileout<<"|"<<setw(23)<<left<<"     Ho va Ten "<<"|"<<setw(12)<<left <<"  Que Quan "<<"|"
+	<<setw(7)<<left <<"  Tuoi"<<"|"<<setw(10)<<left <<"Gioi Tinh"<<"|"<<setw(10)<<"Ngay sinh"
+			<<"|"<<setw(5)<<right<<" DRL "<<"|"<<setw(5)<<right<<" DTL "<<"|"<<setw(5)<<right
+			<<"ID  "<<"|"<<setw(9)<<right<<" Nganh  " <<"|"<<"\n";
+	fileout<<" ----------------------------------------------------------------------------------------------"<<"\n";
+	for(Node *p=l.head;p!=NULL;p=p->Next){
+		
+		Ghifilesv(fileout, p->data);
+		fileout<<"\n";
+		fileout<<" ----------------------------------------------------------------------------------------------"<<"\n";
+		//fileout<<endl;
+		
+			}
+		
+	}
+		
 void List:: input(List &l){
 	Sinhvien x;
 	int n;
