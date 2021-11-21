@@ -24,3 +24,18 @@ using namespace std;
 		void Docfilengaysinh(ifstream &filein , Ngaysinh &ns);
 		void Ghifilengaysinh(ofstream &fileout,Ngaysinh ns);
 };
+class Nguoi:public Ngaysinh{
+	private:
+		string hoten;
+		string qq;
+		int age;
+		string gt;
+	public:
+		Nguoi();
+		~Nguoi();
+		void nhap();
+		void in();
+		string getten();
+		void Docfilenguoi(ifstream &filein , Nguoi  &ng);
+		void Ghifilenguoi(ofstream &fileout ,Nguoi ng);
+};
