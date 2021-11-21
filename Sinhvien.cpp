@@ -296,6 +296,25 @@ Node* List:: createNode(Sinhvien v){
     return p;
 	    
 }
+void Ngaysinh::Docfilengaysinh(ifstream &filein , Ngaysinh &ns){
+	int ngay;
+	filein>>ns.ngay;
+	filein.ignore(1);
+	int thang;
+	filein>>ns.thang;
+	filein.ignore(1);
+	int nam;
+	filein>>ns.nam;
+
+}
+void Nguoi::Docfilenguoi(ifstream &filein , Nguoi  &ng){
+	getline(filein,ng.hoten,',');
+	getline(filein,ng.qq,',');
+	filein>>ng.age;
+	filein.ignore(2);
+	getline(filein,ng.gt,',');
+	Docfilengaysinh(filein,ng);
+}
 void List:: input(List &l){
 	Sinhvien x;
 	int n;
