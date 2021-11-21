@@ -656,7 +656,17 @@ cout <<setw(105)<<right<<"CHUONG TRINH QUAN LY SINH VIEN C++\n";
         cout <<setw(115)<<right<< "**  1. Nhap danh sach sinh vien.                    **\n";
         cout <<setw(115)<<right<< "**  2. Sap xep sinh vien.                           **\n";
         cout <<setw(115)<<right<< "**  3. Tim kiem sinh vien.                          **\n";
-	
+	cout <<setw(115)<<right<< "**  4. Them mot sinh vien vao danh sach.            **\n";
+        cout <<setw(115)<<right<< "**  5. Cap nhat sinh vien.                          **\n";
+        cout <<setw(115)<<right<< "**  6. Xoa sinh vien.                               **\n";
+        cout <<setw(112)<<right<< "**  7. Hien thi danh sach cac sinh vien.	        **\n";
+        cout <<setw(112)<<right<< "**  8. Doc file sinh vien.      	                **\n";
+        cout <<setw(108)<<right<< "**  9. Ghi danh sach sinh vien vao file txt.	**\n";
+        cout <<setw(115)<<right<< "**  0. Thoat.                                       **\n";
+        cout <<setw(115)<<right<< "**                                                  **\n";
+        cout <<setw(115)<<right<< "******************************************************\n";
+        cout <<setw(75)<<right<< "Nhap tuy chon: ";
+        fflush(stdin);
 	
 	return ;
 }
