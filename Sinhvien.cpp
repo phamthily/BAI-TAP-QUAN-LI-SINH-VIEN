@@ -291,6 +291,13 @@ void Ngaysinh::Docfilengaysinh(ifstream &filein , Ngaysinh &ns){
 	filein>>ns.nam;
 
 }
+void Ngaysinh::Ghifilengaysinh(ofstream &fileout,Ngaysinh ns){
+	fileout<<setw(2)<<left <<ns.ngay<<"/";
+	
+	fileout<<setw(2)<<left<<ns.thang<<"/";
+
+	fileout<<setw(4)<<left<<ns.nam<<"|";
+}
 void Nguoi::Docfilenguoi(ifstream &filein , Nguoi  &ng){
 	getline(filein,ng.hoten,',');
 	getline(filein,ng.qq,',');
@@ -298,6 +305,13 @@ void Nguoi::Docfilenguoi(ifstream &filein , Nguoi  &ng){
 	filein.ignore(2);
 	getline(filein,ng.gt,',');
 	Docfilengaysinh(filein,ng);
+}
+void Nguoi::Ghifilenguoi(ofstream &fileout, Nguoi ng){
+	fileout<<"|"<<setw(23)<<left << ng.hoten << "|";
+	fileout<<setw(12)<<right << ng.qq <<"|" ;
+	fileout<<setw(7)<<right<< ng.age <<"|" ;
+	fileout<<setw(10)<<right<<ng.gt <<"|";
+	Ghifilengaysinh(fileout, ng);
 }
 void Diem::Docfilediem(ifstream &filein , Diem &d){
 	float drl;
