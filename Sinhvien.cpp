@@ -58,13 +58,8 @@ void Nguoi::nhap(){
 	
 }
 void Nguoi:: in(){
-	cout<<"Ho va ten: "<<hoten<<endl;
-	cout<<"Que quan:"<< qq<<endl;
-	cout<<"Tuoi:"<<age<<endl;
-	if(gt==0)
-	   cout<<"Nam"<<endl;
-	else
-	   cout<<"Nu"<<endl;
+	cout<<setw(30)<<left<<hoten<<setw(21)<<left<<qq<<setw(16)<<left<<gt<<setw(12)<<left<<age	;
+	inns();
 }
 Nguoi::Nguoi(){
     this->hoten=" ";
