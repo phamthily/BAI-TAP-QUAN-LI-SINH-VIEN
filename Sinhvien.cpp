@@ -1,6 +1,9 @@
 #include "Sinhvien.h"
-#include<iostream>
-#include<string.h>
+#include<fstream>
+#include<iomanip>
+#include <conio.h>
+#include <ctype.h>
+#include <windows.h>
 
 using namespace std;
 
