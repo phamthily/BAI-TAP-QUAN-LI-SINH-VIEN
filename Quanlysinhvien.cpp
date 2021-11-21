@@ -1,12 +1,179 @@
-#include<iomanip>
 #include<string.h> 
 #include<iostream>
 #include<fstream>
+#include<iomanip>
 #include <conio.h>
 #include <ctype.h>
 #include <windows.h>
-#include"Quanlysinhvien.h"
 using namespace std;
+ 
+ class Ngaysinh{
+	private:
+	    int ngay, thang, nam;
+	public:
+		Ngaysinh();
+		~Ngaysinh();
+		void nhapns();
+		void inns();
+		int getter_Ngay();
+		int getter_Thang();
+		int getter_Nam();
+		void setter_Ngay( int ngay);
+		void setter_Thang( int thang);
+		void setter_Nam( int nam);
+		void Docfilengaysinh(ifstream &filein , Ngaysinh &ns);
+		void Ghifilengaysinh(ofstream &fileout,Ngaysinh ns);
+};
+int Ngaysinh:: getter_Ngay(){
+		   return ngay;
+}
+void Ngaysinh:: setter_Ngay( int ngay){
+		   this->ngay = ngay;
+}
+int Ngaysinh::getter_Thang(){
+		   return thang;
+}
+void Ngaysinh:: setter_Thang(int thang){
+		  this->thang = thang;
+}
+int Ngaysinh:: getter_Nam(){
+		   return nam;
+}
+void Ngaysinh::setter_Nam(int nam){
+		  this->nam = nam;
+}
+Ngaysinh::Ngaysinh(){
+	ngay=thang=nam=0;
+}
+Ngaysinh::~Ngaysinh(){
+    ngay=thang=nam=0;
+}
+class Nguoi:public Ngaysinh{
+	private:
+		string hoten;
+		string qq;
+		int age;
+		string gt;
+	public:
+		Nguoi();
+		~Nguoi();
+		void nhap();
+		void in();
+		string getten();
+		
+		void Docfilenguoi(ifstream &filein , Nguoi  &ng);
+		void Ghifilenguoi(ofstream &fileout ,Nguoi ng);
+};
+Nguoi::Nguoi(){
+    this->hoten=" ";
+	this->qq=" ";
+	this->gt=" ";
+	this->age=0;	
+}
+Nguoi::~Nguoi(){
+	this->hoten=" ";
+	this->qq=" ";
+	this->gt=" ";
+	this->age=0;
+}
+
+string Nguoi::getten(){
+	return hoten;
+}
+class Diem {
+	private:
+	    float drl;
+	    float dtl;
+	public:
+		Diem();
+		~Diem();
+		void nhapd();
+		void ind();
+		float getdrl();
+		float getdtl();
+		void xeploai();
+	    void Docfilediem(ifstream &filein , Diem &d);
+	    void Ghifilediem(ofstream &fileout,Diem d);
+};
+Diem::Diem(){
+	this->drl=0;
+	this->dtl=0;
+}
+Diem::~Diem(){
+    this->drl=0;
+	this->dtl=0;	
+}
+float Diem::getdrl(){
+	return drl;
+}
+float Diem::getdtl(){
+	return dtl;
+}
+class Sinhvien:public Nguoi,public Diem{
+	private:
+		int ID;
+		string nganh;
+	public:
+		Sinhvien();
+		~Sinhvien();
+	   Sinhvien nhaps(Sinhvien &sv);
+	   Sinhvien  ins(Sinhvien sv);
+	   string getnganh();
+	   void hoanvi(Sinhvien &sv1,Sinhvien &sv2);
+	   int getid();
+	   void Docfilesv(ifstream &filein , Sinhvien &Sv);
+	   void Ghifilesv(ofstream &fileout,Sinhvien Sv);
+};
+string Sinhvien::getnganh(){
+	return nganh; 
+}
+int Sinhvien:: getid(){
+    return ID;	
+}
+Sinhvien::Sinhvien(){
+	this->ID=0;
+	this->nganh=" ";
+}
+Sinhvien::~Sinhvien(){
+	this->ID=0;
+	this->nganh=" ";
+}
+struct Node{
+	Sinhvien data;
+     struct Node *Next;
+};
+class List:public Sinhvien{
+	private:
+	   Node* head;
+	   Node* tail;
+	public:
+       void KhoitaoList(List &l);
+       Node* createNode(Sinhvien x);
+       void  addhead(List &l, Node *p);
+       void addtail(List &l,Node *p);
+       void Show(List l);
+       void showNode(Node* k);
+       void input(List &l);
+       void sapxepdtl(List l);
+       void sapxepten(List l);
+       void SapXepTheoDRL(List l);
+       void SapXep(List l);
+       void timkiemten(List l);
+       void timkiemid(List l);
+       void TimKiem(List l);
+       void TimKiemSinhVienChungNganh(List l);
+       void update(List l);
+       void themsv(List &l);
+       void xoatheoten(List l);
+       void xoatheoID(List l);
+       void Xoa(List l);
+       void deleteList(List &l);
+       void DocFile(ifstream &filein, List &l);
+       void GhiFile(ofstream &fileout,List l);
+       void pressAnyKey();
+       void menu();
+       void Menu();
+};
 void Ngaysinh:: nhapns(){
 	cout<<"Nhap ngay :";
 	cin>>ngay;
@@ -16,7 +183,7 @@ void Ngaysinh:: nhapns(){
 	cin>>nam;
 }
 void Ngaysinh:: inns(){
-	cout<<setw(2)<<left<<ngay<<"/"<<setw(2)<<left<<thang<<"/"<<setw(15)<<left<<nam;
+	cout<<setw(2)<<left<<ngay<<"/"<<setw(2)<<left<<thang<<"/"<<setw(18)<<left<<nam;
 }
 void Nguoi::nhap(){
 	fflush(stdin);
@@ -34,7 +201,7 @@ void Nguoi::nhap(){
 	
 }
 void Nguoi:: in(){
-	cout<<setw(30)<<left<<hoten<<setw(15)<<left<<qq<<setw(10)<<left<<gt<<setw(7)<<left<<age	;inns();
+		cout<<setw(30)<<left<<hoten<<setw(21)<<left<<qq<<setw(16)<<left<<gt<<setw(12)<<left<<age	;inns();
 }
 void Diem::nhapd(){
 	
@@ -45,7 +212,7 @@ void Diem::nhapd(){
 }
 
 void Diem::ind(){
-	cout<<setw(20)<<left<<drl<<setw(15)<<left<<dtl;
+   cout<<setw(23)<<left<<drl<<setw(17)<<left<<dtl;
 }
 Sinhvien Sinhvien::nhaps(Sinhvien &sv){
 	
@@ -60,45 +227,68 @@ Sinhvien Sinhvien::nhaps(Sinhvien &sv){
     return sv;
 }
 Sinhvien Sinhvien::ins(Sinhvien sv){
-	sv.in();sv.ind();cout<<setw(18)<<left<<sv.ID<<setw(20)<<left<<sv.nganh;
+	sv.in();
+	sv.ind();
+	cout<<setw(10)<<left<<sv.ID<<setw(20)<<left<<sv.nganh;
 	return sv;
 }
-Ngaysinh::Ngaysinh(){
-	ngay=thang=nam=0;
+void List::KhoitaoList(List &l){
+	l.head=NULL;
+	l.tail=NULL;
 }
-Ngaysinh::~Ngaysinh(){
-    ngay=thang=nam=0;
+Node* List:: createNode(Sinhvien v){
+	Node* p=new Node;
+	if(p==NULL){
+		cout<<"khong the tao them ";
+		return 0;
+	}
+	p->data = v;
+    p->Next = NULL;
+    return p;
+	    
 }
-Nguoi::Nguoi(){
-    this->hoten=" ";
-	this->qq=" ";
-	this->gt=" ";
-	this->age=0;	
+void List:: addhead(List &l, Node *p)
+{
+     if(l.head==NULL)
+     {
+          l.head=p;
+          l.tail=p;
+     }
+     else
+     {
+          p->Next=l.head;
+          l.head=p;
+     }
 }
-Nguoi::~Nguoi(){
-	this->hoten=" ";
-	this->qq=" ";
-	this->gt=" ";
-	this->age=0;
+void List:: addtail(List &l,Node *p)
+{
+    if(l.tail==NULL)
+    addhead(l,p);
+    else
+    {
+        l.tail->Next=p;
+        l.tail=p;
+    }
 }
-Diem::Diem(){
-	this->drl=0;
-	this->dtl=0;
+void List:: input(List &l){
+	Sinhvien x;
+	int n;
+	
+	cout<<"nhap so luong sinh vien :";
+	cin>>n;
+	cout<<endl;
+	for(int i=1;i<=n;i++){
+		cout<<endl;
+		cout<<"Nhap sinh vien thu :"<<i<<endl;
+		cout<<endl<<"************************"<<endl;
+	nhaps(x);
+	Node *p=createNode(x);
+	addtail(l,p);
+    }
 }
-Diem::~Diem(){
-    this->drl=0;
-	this->dtl=0;	
-}
-Sinhvien::Sinhvien(){
-	this->ID=0;
-	this->nganh=" ";
-}
-//Sinhvien::~Sinhvien(){
-//	this->ID=0;
-//	this->nganh=" ";
-//}
+
 void  List::timkiemten(List l){
-	int d=0;
+	int d=0,i=1;
 	Node *p=l.head;
     string ten;
     
@@ -110,7 +300,9 @@ void  List::timkiemten(List l){
     getline(cin,ten); 
     for(Node *p=l.head;p!=NULL;p=p->Next){
     	if((ten==p->data.getten())){
-    	    ins(p->data);
+    		showNode(p);
+    	   cout<<setw(4)<<left<<i;ins(p->data);i++;
+    	    
     	    d++;
         }
 	}
@@ -119,8 +311,59 @@ void  List::timkiemten(List l){
         }
     }
 }
+void  List::timkiemid(List l){
+	
+    int id,i=1;
+    Node *p=l.head;
+    
+    int d=0;
+    if(p==NULL)
+        cout<<"danh sach rong!";
+    else{
+	cout<<"Nhap ID can tim  :";
+    cin>>id;
+    for(Node *p=l.head;p!=NULL;p=p->Next){
+    	if(id==p->data.getid()){
+    		showNode(p);
+    	   cout<<setw(4)<<left<<i;ins(p->data);i++;
+    	    
+    	    d++;
+    	    }
+	}
+    if(d==0) {
+		
+		    cout<<"Khong tim thay sinh vien nao !"<<endl;
+        }
+    }
+}
+void List::TimKiemSinhVienChungNganh(List l){
+	string Nganh;
+	int i=1;
+	Node*p=l.head;
+	int dem=0;
+    if(p==NULL)
+	   	cout<<"danh sach rong!"<<endl;
+	else{
+	fflush(stdin);
+    cout<<"Nhap nganh hoc can tim :";
+    getline(cin,Nganh);
+    for(Node *p=l.head;p!=NULL;p=p->Next){
+    	if((Nganh==p->data.getnganh())){
+    	     showNode(p);
+    	     cout<<setw(4)<<left<<i;ins(p->data);
+    	    }
+    	    dem++;
+    	    i++;
+		} 
+		
+		if(dem==0){
+	    cout<<"Khong tim thay sinh vien nao !"<<endl;
+   		}
+   	}
+}
+
 void List::update(List l){
-	Sinhvien x;
+	
 	Node*p=l.head;
     int id;
     int d=0;
@@ -143,62 +386,20 @@ void List::update(List l){
         }
 	}
 }
-void  List::timkiemid(List l){
-	
-    int id;
-    Node *p=l.head;
-    
-    int d=0;
-    if(p==NULL)
-        cout<<"danh sach rong!";
-    else{
-	cout<<"Nhap ID can tim  :";
-    cin>>id;
-    for(Node *p=l.head;p!=NULL;p=p->Next){
-    	if(id==p->data.getid()){
-    	    ins(p->data);
-    	    d++;
-    	    }
-	}
-    if(d==0) {
-		
-		    cout<<"Khong tim thay sinh vien nao !"<<endl;
-        }
-    }
+void List:: themsv(List &l){
+    int n;
+	Sinhvien sv;
+	cout<<endl;
+	cout<<"Nhap thong tin sinh vien can them :"<<endl;
+	nhaps(sv);
+    Node* p=createNode(sv);
+	addtail(l,p);
+	cout<<"Danh sach sinh vien sau khi them:"<<endl;
+	Show(l);
+	cout<<endl;		
 }
-int Ngaysinh:: getter_Ngay(){
-		   return ngay;
-}
-void Ngaysinh:: setter_Ngay( int ngay){
-		   this->ngay = ngay;
-}
-int Ngaysinh::getter_Thang(){
-		   return thang;
-}
-void Ngaysinh:: setter_Thang(int thang){
-		  this->thang = thang;
-}
-int Ngaysinh:: getter_Nam(){
-		   return nam;
-}
-void Ngaysinh::setter_Nam(int nam){
-		  this->nam = nam;
-}
-int Sinhvien:: getid(){
-    return ID;	
-}
-float Diem::getdrl(){
-	return drl;
-}
-float Diem::getdtl(){
-	return dtl;
-}
-string Sinhvien::getnganh(){
-	return nganh; 
-}
-string Nguoi::getten(){
-	return hoten;
-}
+
+
 void Sinhvien::hoanvi(Sinhvien &sv1, Sinhvien &sv2){
 	Sinhvien t=sv1;
              sv1=sv2;
@@ -236,102 +437,34 @@ void List::sapxepdtl(List l){
      Show(l);
      }
 }
-void List::KhoitaoList(List &l){
-	l.head=NULL;
-	l.tail=NULL;
-}
-Node* List:: createNode(Sinhvien v){
-	Node* p=new Node;
-	if(p==NULL){
-		cout<<"khong the tao them ";
-		return 0;
-	}
-	p->data = v;
-    p->Next = NULL;
-    return p;
-	    
-}
-void List:: input(List &l){
-	Sinhvien x;
-	int n;
+void List::SapXepTheoDRL(List l){
+	Node*p=l.head;
+	if(p==NULL)
+       cout<<"Danh sach rong!";
+	else{
 	
-	cout<<"nhap so luong sinh vien :";
-	cin>>n;
-	cout<<endl;
-	for(int i=1;i<=n;i++){
-		cout<<endl;
-		cout<<"Nhap sinh vien thu :"<<i<<endl;
-		cout<<endl<<"************************"<<endl;
-	nhaps(x);
-	Node *p=createNode(x);
-	addtail(l,p);
-}
-}
-void List::Show(List l){
-	int n;
-	int i=1;
-	Sinhvien x;
-	cout<<setw(100)<<"DANH SACH SINH VIEN "<<endl;
-	cout<<"----------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
-	cout<<setw(4)<<left<<"STT"<<setw(30)<<left<<"Ho va ten"<<setw(15)<<left<<"Que quan"<<setw(10)<<left<<"Gioi tinh"<<setw(7)<<left<<"Tuoi"<<setw(19)<<left<<"Ngay sinh"<<setw(20)<<left<<"Diem ren luyen"<<setw(15)<<left<<"Diem tich luy"<<setw(21)<<left<<"ID"<<setw(21)<<left<<"Nganh"<<endl;
-	cout<<"****************************************************************************************************************************************************************************"<<endl;
 	for(Node *p=l.head;p!=NULL;p=p->Next){
-	     cout<<setw(4)<<left<<i;ins(p->data);
-	     cout<<endl;
-	   i++;
-	}
+	    for(Node *q=p->Next;q;q=q->Next){
+		    if(p->data.getdrl()<q->data.getdrl()){
+			    hoanvi(p->data,q->data);
+			}
+		}				
+	} 
+	 cout<<"Danh sach sinh vien da sap xep theo diem ren luyen  "<<endl;
+     Show(l);}
+}
 
-	cout<<"****************************************************************************************************************************************************************************"<<endl;
-	
-}
-void List:: showNode(Node* k){
-	Sinhvien x;
-	cout<<"===========================SV========================="<<endl;
-	ins(k->data);
-}
-void List:: addhead(List &l, Node *p)
-{
-     if(l.head==NULL)
-     {
-          l.head=p;
-          l.tail=p;
-     }
-     else
-     {
-          p->Next=l.head;
-          l.head=p;
-     }
-}
-void List:: addtail(List &l,Node *p)
-{
-    if(l.tail==NULL)
-    addhead(l,p);
-    else
-    {
-        l.tail->Next=p;
-        l.tail=p;
-    }
-}
-void List:: themsv(List &l){
-   int n;
-	Sinhvien sv;
-	cout<<endl;
-	cout<<"Nhap thong tin sinh vien can them :"<<endl;
-	nhaps(sv);
-    Node* p=createNode(sv);
-	addtail(l,p);
-	cout<<"Danh sach sinh vien sau khi them:"<<endl;
-	cout<<endl;
-	sapxepdtl(l);		
-}
+
+
 void List::xoatheoID(List l){
 	int id;
-	cout <<"Nhap ID sinh vien can xoa:";
-	cin >>id;
+	
 	Node *pDel = l.head;
 	 if(pDel == NULL){
 		 cout <<"Danh sach rong!";
 	 }else{
+	 	cout <<"Nhap ID sinh vien can xoa:";
+	    cin >>id;
 		 Node *pPre = NULL;
 		 while (pDel != NULL){
 			 if(pDel->data.getid() == id){
@@ -341,7 +474,7 @@ void List::xoatheoID(List l){
 			 pDel =pDel->Next;
 		 }
 		 if(pDel == NULL){
-			 cout <<"Khong tim thay du lieu !";
+			 cout <<"Khong tim thay du lieu !"<<endl;
 		 }else{
 			 if(pDel == l.head){
 				 l.head= l.head->Next;
@@ -356,99 +489,24 @@ void List::xoatheoID(List l){
 				 pDel =NULL;
 			 }
 		 }
-	 }
 	 cout <<"Danh sach sau khi xoa"<<endl;
-	 Show(l);	
+	 Show(l);
+	 
+	 }
+	 
+	 	
 }
-void Ngaysinh::Docfilengaysinh(ifstream &filein , Ngaysinh &ns){
-	int ngay;
-	filein>>ns.ngay;
-	filein.ignore(1);
-	int thang;
-	filein>>ns.thang;
-	filein.ignore(1);
-	int nam;
-	filein>>ns.nam;
-
-}
-void Ngaysinh::Ghifilengaysinh(ofstream &fileout,Ngaysinh ns){
-	fileout<<ns.ngay<<"/";
-	fileout<<ns.thang<<"/";
-	fileout<<ns.nam<<", ";
-}
-void Nguoi::Docfilenguoi(ifstream &filein , Nguoi  &ng){
-	getline(filein,ng.hoten,',');
-	getline(filein,ng.qq,',');
-	filein>>ng.age;
-	filein.ignore(2);
-	getline(filein,ng.gt,',');
-	Docfilengaysinh(filein,ng);
-	
-	
-}
-void Nguoi::Ghifilenguoi(ofstream &fileout, Nguoi ng){
-	fileout<<ng.hoten<<", ";
-	fileout<<ng.qq<<", ";
-	fileout<<ng.age<<", ";
-	fileout<<ng.gt<<", ";
-	Ghifilengaysinh(fileout,ng);
-}
-void Diem::Docfilediem(ifstream &filein , Diem &d){
-	float drl;
-	filein>>d.drl;
-	filein.ignore(2);
-	float dtl;
-	filein>>d.dtl;
-}
-void Diem::Ghifilediem(ofstream &fileout, Diem d){
-	fileout<<d.drl<<", ";
-	fileout<<d.dtl<<", ";
-}
-void Sinhvien::Docfilesv(ifstream &filein , Sinhvien &Sv){
-
-	
-	Docfilenguoi(filein,Sv);
-	filein.ignore(2);
-    Docfilediem(filein,Sv);
-    filein.ignore(2);
-    int ID;
-    filein>>Sv.ID;
-    filein.ignore(2);
-    getline(filein,Sv.nganh,'.');
-    string t;
-    getline(filein,t);
-    	
-}
-void Sinhvien::Ghifilesv(ofstream &fileout, Sinhvien Sv){
-	Ghifilenguoi(fileout,Sv);
-	Ghifilediem(fileout, Sv);
-	fileout<<Sv.ID<<", "<<Sv.nganh<<".";
-	
-}
-void List::DocFile(ifstream &filein, List &l){
-	while(!filein.eof() ){
-	     Sinhvien sv;
-		 Docfilesv(filein, sv);
-		 Node *p=createNode(sv);
-		 addtail(l,p);
-		
-		 }	 
-	}	
-void List::GhiFile(ofstream &fileout, List l){
-	for(Node* p=l.head;p!=NULL;p=p->Next){
-		Ghifilesv(fileout,p->data);
-		fileout<<endl;
-	}
-}		
+				
 void List::xoatheoten(List l){
 	string ten;
-    fflush(stdin);
-    cout<<"Nhap ten can tim :";
-    getline(cin,ten);
+    
      Node *pDel = l.head;
 	 if(pDel == NULL){
 		 cout <<"Danh sach rong!";
 	 }else{
+	 	fflush(stdin);
+        cout<<"Nhap ten can tim :";
+        getline(cin,ten);
 		 Node *pPre = NULL;
 		 while (pDel != NULL){
 			 if(pDel->data.getten() == ten){
@@ -473,12 +531,128 @@ void List::xoatheoten(List l){
 				 pDel =NULL;
 			 }
 		 }
-	 }
 	 cout <<"Danh sach sau khi xoa"<<endl;
 	 Show(l);
-
-    
+	 
+	 }   
 }
+void Ngaysinh::Docfilengaysinh(ifstream &filein , Ngaysinh &ns){
+	int ngay;
+	filein>>ns.ngay;
+	filein.ignore(1);
+	int thang;
+	filein>>ns.thang;
+	filein.ignore(1);
+	int nam;
+	filein>>ns.nam;
+
+}
+void Ngaysinh::Ghifilengaysinh(ofstream &fileout,Ngaysinh ns){
+	fileout<<setw(2)<<left <<ns.ngay<<"/";
+	
+	fileout<<setw(2)<<left<<ns.thang<<"/";
+
+	fileout<<setw(4)<<left<<ns.nam<<"|";
+}
+void Nguoi::Docfilenguoi(ifstream &filein , Nguoi  &ng){
+	getline(filein,ng.hoten,',');
+	getline(filein,ng.qq,',');
+	filein>>ng.age;
+	filein.ignore(2);
+	getline(filein,ng.gt,',');
+	Docfilengaysinh(filein,ng);
+}
+void Nguoi::Ghifilenguoi(ofstream &fileout, Nguoi ng){
+	fileout<<"|"<<setw(23)<<left << ng.hoten << "|";
+	fileout<<setw(12)<<right << ng.qq <<"|" ;
+	fileout<<setw(7)<<right<< ng.age <<"|" ;
+	fileout<<setw(10)<<right<<ng.gt <<"|";
+	Ghifilengaysinh(fileout, ng);
+}
+void Diem::Docfilediem(ifstream &filein , Diem &d){
+	float drl;
+	filein>>d.drl;
+	filein.ignore(2);
+	float dtl;
+	filein>>d.dtl;
+}
+void Diem::Ghifilediem(ofstream &fileout, Diem d){
+	fileout <<setw(5)<<right<<d.drl<<"|" ;
+	fileout<<setw(5)<<right<<d.dtl<<"|";
+}
+void Sinhvien::Docfilesv(ifstream &filein , Sinhvien &Sv){	
+	Docfilenguoi(filein,Sv);
+	filein.ignore(2);
+    Docfilediem(filein,Sv);
+    filein.ignore(2);
+    int ID;
+    filein>>Sv.ID;
+    filein.ignore(2);
+    getline(filein,Sv.nganh,'.');
+    string t;
+    getline(filein,t);	
+}
+void Sinhvien::Ghifilesv(ofstream &fileout, Sinhvien Sv){
+	Ghifilenguoi(fileout, Sv);
+	Ghifilediem(fileout, Sv);
+	fileout <<setw(5)<<right<< Sv.ID <<"|" <<setw(9)<<Sv.nganh<<"|";
+	
+}
+void List::DocFile(ifstream &filein, List &l){
+	while(!filein.eof() ){
+	     Sinhvien sv;
+		 Docfilesv(filein, sv);
+		 Node *p=createNode(sv);
+		 addtail(l,p);
+		
+		 }	 
+	}	
+void List::GhiFile(ofstream &fileout, List l){
+	fileout<<"\n";
+	fileout<<setw(56)<<"DANH SACH SINH VIEN"<<"\n";
+	fileout<<" ----------------------------------------------------------------------------------------------"<<"\n";
+   fileout<<"|"<<setw(23)<<left<<"     Ho va Ten "<<"|"<<setw(12)<<left <<"  Que Quan "<<"|"
+	<<setw(7)<<left <<"  Tuoi"<<"|"<<setw(10)<<left <<"Gioi Tinh"<<"|"<<setw(10)<<"Ngay sinh"
+			<<"|"<<setw(5)<<right<<" DRL "<<"|"<<setw(5)<<right<<" DTL "<<"|"<<setw(5)<<right
+			<<"ID  "<<"|"<<setw(9)<<right<<" Nganh  " <<"|"<<"\n";
+	fileout<<" ----------------------------------------------------------------------------------------------"<<"\n";
+	for(Node *p=l.head;p!=NULL;p=p->Next){
+		
+		Ghifilesv(fileout, p->data);
+		fileout<<"\n";
+		fileout<<" ----------------------------------------------------------------------------------------------"<<"\n";
+		//fileout<<endl;
+		
+			}
+		
+	}
+	void List::Show(List l){
+	int n;
+	int i=1;
+	Sinhvien x;
+	cout<<setw(100)<<"DANH SACH SINH VIEN "<<endl;
+	cout<<"----------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<setw(4)<<left<<"STT"<<setw(30)<<left<<"Ho va ten"<<setw(17)<<left<<"Que quan"<<setw(18)<<left<<"Gioi tinh"<<setw(14)<<left<<"Tuoi"<<setw(19)<<left<<"Ngay sinh"<<setw(23)<<left<<"Diem ren luyen"<<setw(22)<<left<<"Diem tich luy"<<setw(11)<<left<<"ID"<<setw(21)<<left<<"Nganh"<<endl;
+	cout<<"****************************************************************************************************************************************************************************"<<endl;
+	for(Node *p=l.head;p!=NULL;p=p->Next){
+	     cout<<setw(4)<<left<<i;ins(p->data);
+	     cout<<endl;
+	   i++;
+	}
+
+	cout<<"****************************************************************************************************************************************************************************"<<endl;
+
+}
+void List:: showNode(Node* k){
+	cout<<"----------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<setw(4)<<left<<"STT"<<setw(30)<<left<<"Ho va ten"<<setw(17)<<left<<"Que quan"<<setw(18)<<left<<"Gioi tinh"<<setw(14)<<left<<"Tuoi"<<setw(19)<<left<<"Ngay sinh"<<setw(23)<<left<<"Diem ren luyen"<<setw(22)<<left<<"Diem tich luy"<<setw(11)<<left<<"ID"<<setw(21)<<left<<"Nganh"<<endl;
+	cout<<"****************************************************************************************************************************************************************************"<<endl;
+	
+
+}
+
+
+
 void List::deleteList(List &l){
 	Node *p=NULL;
 	while(l.head!=NULL){
@@ -493,53 +667,21 @@ void List::pressAnyKey(){
      system("cls");
    
 }
-void List::SapXepTheoDRL(List l){
-	Node*p=l.head;
-	if(p==NULL)
-       cout<<"Danh sach rong!";
-	else{
-	
-	for(Node *p=l.head;p!=NULL;p=p->Next){
-	    for(Node *q=p->Next;q;q=q->Next){
-		    if(p->data.getdrl()<q->data.getdrl()){
-			    hoanvi(p->data,q->data);
-			}
-		}				
-	}cout<<"Danh sach sinh vien da sap xep theo diem ren luyen  "<<endl;
-     Show(l);}
-}
-void List::TimKiemSinhVienChungNganh(List l){
-	string Nganh;
-	Node*p=l.head;
-	int dem=0;
-    if(p==NULL)
-	   	cout<<"danh sach rong!"<<endl;
-	else{
-    cout<<"Nhap nganh hoc can tim :";
-    cin>>Nganh;
-    for(Node *p=l.head;p!=NULL;p=p->Next){
-    	if((Nganh==p->data.getnganh())){
-    	    ins(p->data);
-    	    dem++;
-    	    }
-		} 
-	if(dem==0){
-	    cout<<"Khong tim thay sinh vien nao !"<<endl;
-   	}
-	}
-}
+
 void List::SapXep(List l){
 	
 	int t1=1	,c;
 	while(t1){
-		cout<<"-------------------------------------------------"<<endl;
-		cout<<"|                                               |"<<endl;
-		cout<<"|   1. Sap xep sinh vien theo ten.              |"<<endl;
-		cout<<"|   2. Sap xep sinh vien theo diem tich luy.    |"<<endl;
-		cout<<"|   3. Sap xep sinh vien theo diem ren luyen.   |"<<endl;
-		cout<<"|                                               |"<<endl;
-		cout<<"-------------------------------------------------"<<endl;
-		cout<<"Nhap lua chon";
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(110)<<right<<"|                   MENU SAP XEP                |"<<endl;
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(110)<<right<<"|                                               |"<<endl;
+		cout<<setw(110)<<right<<"|   1. Sap xep sinh vien theo ten.              |"<<endl;
+		cout<<setw(110)<<right<<"|   2. Sap xep sinh vien theo diem tich luy.    |"<<endl;
+		cout<<setw(110)<<right<<"|   3. Sap xep sinh vien theo diem ren luyen.   |"<<endl;
+		cout<<setw(110)<<right<<"|                                               |"<<endl;
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(75)<<right<<"Nhap lua chon:";
 		cin>>c;
 		switch(c){
 			case 1:
@@ -558,7 +700,7 @@ void List::SapXep(List l){
             	pressAnyKey();
             	break;
             case 0:
-                cout << "\nBan da chon thoat chuong trinh!";
+                cout << "\nBan da chon thoat tuy chon!";
                 getch();
                 return ;
 			default:
@@ -571,17 +713,19 @@ void List::SapXep(List l){
 	
 }
 void List::TimKiem(List l){
-	int t1=1	,c;
+	int t1=1,c;
 	Node*p=l.head;
 	while(t1){
-		cout<<"-------------------------------------------------"<<endl;
-		cout<<"|                                               |"<<endl;
-		cout<<"|   1. Tim kiem sinh vien theo ten.             |"<<endl;
-		cout<<"|   2. Tim kiem sinh vien theo ID.              |"<<endl;
-		cout<<"|   3. Tim kiem sinh vien chung nganh.          |"<<endl;
-		cout<<"|                                               |"<<endl;
-		cout<<"-------------------------------------------------"<<endl;
-		cout<<"Nhap lua chon:";
+        cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(110)<<right<<"|                   MENU TIM KIEM               |"<<endl;
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(110)<<right<<"|                                               |"<<endl;
+		cout<<setw(110)<<right<<"|   1. Tim kiem sinh vien theo ten.             |"<<endl;
+		cout<<setw(110)<<right<<"|   2. Tim kiem sinh vien theo ID.              |"<<endl;
+		cout<<setw(110)<<right<<"|   3. Tim kiem sinh vien chung nganh.          |"<<endl;
+		cout<<setw(110)<<right<<"|   0. Nhan de thoat tim kiem sinh vien.        |"<<endl;
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(75)<<right<<"Nhap lua chon:";
 		cin>>c;
 		switch(c){
 			case 1:
@@ -600,13 +744,12 @@ void List::TimKiem(List l){
             		cout<<"Danh sach cua ban dang rong! "<<endl;		
             	}
             	else{	
-          			TimKiemSinhVienChungNganh(l);
-            			
+          			TimKiemSinhVienChungNganh(l);	
             	}
             	pressAnyKey();
             	break;
             case 0:
-                cout << "\nBan da chon thoat chuong trinh!";
+                cout << "\nBan da chon thoat tuy chon!";
                 getch();
                 return ;
 			default:
@@ -622,13 +765,17 @@ void List::Xoa(List l){
 	int t1=1	,c;
 	Node*p=l.head;
 	while(t1){
-		cout<<"-------------------------------------------------"<<endl;
-		cout<<"|                                               |"<<endl;
-		cout<<"|   1. Xoa sinh vien theo ten.                  |"<<endl;
-		cout<<"|   2. Xoa sinh vien theo ID.                   |"<<endl;
-		cout<<"|                                               |"<<endl;
-		cout<<"-------------------------------------------------"<<endl;
-		cout<<"Nhap lua chon:";
+		
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(110)<<right<<"|                    MENU XOA                   |"<<endl;
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(110)<<right<<"|                                               |"<<endl;
+		cout<<setw(110)<<right<<"|   1. Xoa sinh vien theo ten.                  |"<<endl;
+		cout<<setw(110)<<right<<"|   2. Xoa sinh vien theo ID.                   |"<<endl;
+		cout<<setw(110)<<right<<"|   0. Thoat                                    |"<<endl;
+		cout<<setw(110)<<right<<"|                                               |"<<endl;
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout<<setw(75)<<right<<"Nhap lua chon:";
 		cin>>c;
 		switch(c){
 			case 1:
@@ -642,7 +789,7 @@ void List::Xoa(List l){
             	pressAnyKey();
                 break;
             case 0:
-                cout << "\nBan da chon thoat chuong trinh!";
+                cout << "\nBan da chon thoat tuy chon!";
                 getch();
                 return ;
 			default:
@@ -653,6 +800,7 @@ void List::Xoa(List l){
 		}
 	}
 }
+
 void List:: menu(){
 	List l;
 	Sinhvien sv;
@@ -666,22 +814,35 @@ void List:: menu(){
 		int key,t=1;
 	while(t){ 
 		system("cls");
-        cout << "CHUONG TRINH QUAN LY SINH VIEN C++\n";
-        cout << "*************************MENU*************************\n";
-        cout << "**                                                  **\n";
-        cout << "**  1. Nhap danh sach sinh vien.                    **\n";
-        cout << "**  2. Sap xep sinh vien.                           **\n";
-        cout << "**  3. Tim kiem sinh vien.                          **\n";
-        cout << "**  4. Them mot sinh vien vao danh sach.            **\n";
-        cout << "**  5. Cap nhat sinh vien.                          **\n";
-        cout << "**  6. Xoa sinh vien.                               **\n";
-        cout << "**  7. Hien thi danh sach cac sinh vien.	    **\n";
-        cout << "**  8. Doc file sinh vien.      	            **\n";
-        cout << "**  9. Ghi danh sach sinh vien vao file txt.	    **\n";
-        cout << "**  0. Thoat.                                       **\n";
-        cout << "**                                                  **\n";
-        cout << "******************************************************\n";
-        cout << "Nhap tuy chon: ";
+		cout <<"\n\n"  ;  
+cout<<setw(130)<<right<<"        @@@@@@.       @@@@@@                  @@@@@@  @@@@@@                 "<<"\n";            
+cout<<setw(130)<<right<<"      /@@@@@,       @@@@@@                  @@@@@@  @@@@@@                   "<<"\n";         
+cout<<setw(130)<<right<<"      @@@@@,       *@@@@@                  @@@@@@  &@@@@@                    "<<"\n" ;          
+cout<<setw(130)<<right<<"     @@@@@@@@@@@@@@@@@@@     @@@@@@@@@@   ,@@@@@   @@@@@    @@@@@@@@@@       "<<"\n";      
+cout<<setw(130)<<right<<"    @@@@@@@@@@@@@@@@@@@   @@@@@   @@@@@#  @@@@@   @@@@@  /@@@@@@@@@@@@@      "<<"\n";        
+cout<<setw(130)<<right<<"   @@@@@@        @@@@@@  @@@@@@@@@@@@@@  @@@@@   @@@@@  @@@@@     @@@@@      "<<"\n";       
+cout<<setw(130)<<right<<"  @@@@@@        @@@@@@  @@@@@           @@@@@   @@@@@  @@@@@@    @@@@@       "<<"\n";      
+cout<<setw(130)<<right<<" @@@@@@        @@@@@@   @@@@@@@@@@@@.  @@@@@   @@@@@.  /@@@@@@@@@@@@         "<<"\n";      
+cout<<setw(130)<<right<<"@@@@@#       @@@@@@      @@@@@@@@.   @@@@@@  @@@@@@     (@@@@@@*             "<<"\n";        
+ cout <<"\n\n"  ;                                                                                       
+        cout <<setw(105)<<right<<"CHUONG TRINH QUAN LY SINH VIEN C++\n";
+        cout <<setw(115)<<right<< "------------------------------------------------------\n";
+        cout <<setw(115)<<right<< "|                         MENU                       |\n";
+        cout <<setw(115)<<right<< "------------------------------------------------------\n";
+        cout <<setw(115)<<right<< "**                                                  **\n";
+        cout <<setw(115)<<right<< "**  1. Nhap danh sach sinh vien.                    **\n";
+        cout <<setw(115)<<right<< "**  2. Sap xep sinh vien.                           **\n";
+        cout <<setw(115)<<right<< "**  3. Tim kiem sinh vien.                          **\n";
+        cout <<setw(115)<<right<< "**  4. Them mot sinh vien vao danh sach.            **\n";
+        cout <<setw(115)<<right<< "**  5. Cap nhat sinh vien.                          **\n";
+        cout <<setw(115)<<right<< "**  6. Xoa sinh vien.                               **\n";
+        cout <<setw(112)<<right<< "**  7. Hien thi danh sach cac sinh vien.	        **\n";
+        cout <<setw(112)<<right<< "**  8. Doc file sinh vien.      	                **\n";
+        cout <<setw(108)<<right<< "**  9. Ghi danh sach sinh vien vao file txt.	**\n";
+        cout <<setw(115)<<right<< "**  0. Thoat.                                       **\n";
+        cout <<setw(115)<<right<< "**                                                  **\n";
+        cout <<setw(115)<<right<< "******************************************************\n";
+        cout <<setw(75)<<right<< "Nhap tuy chon: ";
         fflush(stdin);
         cin >> key;
         switch(key){
@@ -743,6 +904,7 @@ void List:: menu(){
             case 9:
                 cout<<"\n9. Ghi file sinh vien."<<endl;
                 GhiFile(fileout,l);
+                cout<<"Ghi file thanh cong";
             	pressAnyKey();
             	break;
             case 0:
@@ -759,4 +921,12 @@ void List:: menu(){
     
 filein.close();
 fileout.close();
+}
+
+int main(){
+	system("color b0");
+    List l;
+    l.menu();
+	system("pause");
+	return 0;
 }
