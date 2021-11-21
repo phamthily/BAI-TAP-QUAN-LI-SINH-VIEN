@@ -66,12 +66,27 @@ void Nguoi:: in(){
 	else
 	   cout<<"Nu"<<endl;
 }
+Nguoi::Nguoi(){
+    this->hoten=" ";
+	this->qq=" ";
+	this->gt=" ";
+	this->age=0;	
+}
+Nguoi::~Nguoi(){
+	this->hoten=" ";
+	this->qq=" ";
+	this->gt=" ";
+	this->age=0;
+}
 void Diem::nhapd(){
 	
 	cout<<"Nhap drl:";
 	cin>>drl;
 	cout<<"Nhap dtl:";
 	cin>>dtl;
+}
+string Nguoi::getten(){
+	return hoten;
 }
 
 void Diem::ind(){
@@ -146,9 +161,7 @@ float Diem::getdtl(){
 string Sinhvien::getnganh(){
 	return nganh; 
 }
-string Nguoi::getten(){
-	return hoten;
-}
+
 void Sinhvien::hoanvi(Sinhvien &sv1, Sinhvien &sv2){
 	Sinhvien t=sv1;
              sv1=sv2;
