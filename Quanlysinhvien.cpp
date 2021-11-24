@@ -201,10 +201,10 @@ void Nguoi::nhap(){
 	
 }
 void Nguoi:: in(){
-		cout<<setw(30)<<left<<hoten<<setw(21)<<left<<qq<<setw(16)<<left<<gt<<setw(12)<<left<<age	;inns();
+	cout<<setw(30)<<left<<hoten<<setw(21)<<left<<qq<<setw(16)<<left<<gt<<setw(12)<<left<<age;
+	inns();
 }
 void Diem::nhapd(){
-	
 	cout<<"Nhap drl:";
 	cin>>drl;
 	cout<<"Nhap dtl:";
@@ -301,10 +301,8 @@ void  List::timkiemten(List l){
     for(Node *p=l.head;p!=NULL;p=p->Next){
     	if((ten==p->data.getten())){
     		showNode(p);
-    	   cout<<setw(4)<<left<<i;ins(p->data);i++;
-    	    
+    	   cout<<setw(4)<<left<<i;ins(p->data);i++; 
     	    d++;
-        }
 	}
 	if(d==0) {
 		cout<<"Khong tim thay sinh vien nao !"<<endl;
