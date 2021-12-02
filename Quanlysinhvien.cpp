@@ -201,10 +201,10 @@ void Nguoi::nhap(){
 	
 }
 void Nguoi:: in(){
-	cout<<setw(30)<<left<<hoten<<setw(21)<<left<<qq<<setw(16)<<left<<gt<<setw(12)<<left<<age;
-	inns();
+		cout<<setw(30)<<left<<hoten<<setw(21)<<left<<qq<<setw(16)<<left<<gt<<setw(12)<<left<<age	;inns();
 }
 void Diem::nhapd(){
+	
 	cout<<"Nhap drl:";
 	cin>>drl;
 	cout<<"Nhap dtl:";
@@ -301,8 +301,10 @@ void  List::timkiemten(List l){
     for(Node *p=l.head;p!=NULL;p=p->Next){
     	if((ten==p->data.getten())){
     		showNode(p);
-    	   cout<<setw(4)<<left<<i;ins(p->data);i++; 
+    	   cout<<setw(4)<<left<<i;ins(p->data);i++;
+    	    
     	    d++;
+        }
 	}
 	if(d==0) {
 		cout<<"Khong tim thay sinh vien nao !"<<endl;
@@ -649,8 +651,6 @@ void List:: showNode(Node* k){
 
 }
 
-
-
 void List::deleteList(List &l){
 	Node *p=NULL;
 	while(l.head!=NULL){
@@ -665,7 +665,6 @@ void List::pressAnyKey(){
      system("cls");
    
 }
-
 void List::SapXep(List l){
 	
 	int t1=1	,c;
@@ -711,17 +710,28 @@ void List::SapXep(List l){
 	
 }
 void List::TimKiem(List l){
-	int t1=1,c;
+	int t1=1	,c;
 	Node*p=l.head;
 	while(t1){
-        cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
+		cout <<"\n\n";
+cout<<setw(94)<<right<<"		     @@@@@@@@@@*              "<<"\n";  
+cout<<setw(100)<<right<<"           @@& %@,    ,@@,           "<<"\n";     
+cout<<setw(100)<<right<<"          @@, ,         @@           "<<"\n";     
+cout<<setw(100)<<right<<"          @@*           @@           "<<"\n";     
+cout<<setw(100)<<right<<"           @@@        #@@            "<<"\n";     
+cout<<setw(100)<<right<<"              @@@@@@@@  @@@@@        "<<"\n";      
+cout<<setw(100)<<right<<"                         @@@@@#      "<<"\n";     
+cout<<setw(100)<<right<<"                           *@@@#     "<<"\n";  
+cout<<"\n";
+		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
 		cout<<setw(110)<<right<<"|                   MENU TIM KIEM               |"<<endl;
 		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
 		cout<<setw(110)<<right<<"|                                               |"<<endl;
 		cout<<setw(110)<<right<<"|   1. Tim kiem sinh vien theo ten.             |"<<endl;
 		cout<<setw(110)<<right<<"|   2. Tim kiem sinh vien theo ID.              |"<<endl;
 		cout<<setw(110)<<right<<"|   3. Tim kiem sinh vien chung nganh.          |"<<endl;
-		cout<<setw(110)<<right<<"|   0. Nhan de thoat tim kiem sinh vien.        |"<<endl;
+		cout<<setw(110)<<right<<"|   0. Thoat                                    |"<<endl;
+		cout<<setw(110)<<right<<"|                                               |"<<endl;
 		cout<<setw(110)<<right<<"-------------------------------------------------"<<endl;
 		cout<<setw(75)<<right<<"Nhap lua chon:";
 		cin>>c;
@@ -732,18 +742,15 @@ void List::TimKiem(List l){
             	pressAnyKey();
                 break;
             case 2:
-            	cout<<"\n2. Tim kiem sinh vien theo ID. "<<endl;	
+            	cout<<"\n2. Tim kiem sinh vien theo ID. "<<endl;
                 timkiemid(l);
+                
             	pressAnyKey();
                 break;
 			case 3:
-            	cout<<"\n3. Tim kiem sinh vien chung nganh"<<endl;
-            	if(p == NULL){
-            		cout<<"Danh sach cua ban dang rong! "<<endl;		
-            	}
-            	else{	
-          			TimKiemSinhVienChungNganh(l);	
-            	}
+            	cout<<"\n3. Tim kiem sinh vien chung nganh"<<endl;	
+          		TimKiemSinhVienChungNganh(l);	
+            	
             	pressAnyKey();
             	break;
             case 0:
@@ -806,7 +813,6 @@ void List:: menu(){
 	KhoitaoList(l);
 	ifstream filein;
 	ofstream fileout;
-	
 	filein.open("SINHVIEN.TXT",ios::in);
     fileout.open("SINHVIEN1.TXT",ios::out);
 		int key,t=1;
@@ -902,6 +908,7 @@ cout<<setw(130)<<right<<"@@@@@#       @@@@@@      @@@@@@@@.   @@@@@@  @@@@@@    
             case 9:
                 cout<<"\n9. Ghi file sinh vien."<<endl;
                 GhiFile(fileout,l);
+                fileout.close();
                 cout<<"Ghi file thanh cong";
             	pressAnyKey();
             	break;
@@ -918,13 +925,15 @@ cout<<setw(130)<<right<<"@@@@@#       @@@@@@      @@@@@@@@.   @@@@@@  @@@@@@    
     }
     
 filein.close();
-fileout.close();
+
 }
 
 int main(){
 	system("color b0");
+
     List l;
     l.menu();
 	system("pause");
 	return 0;
 }
+
