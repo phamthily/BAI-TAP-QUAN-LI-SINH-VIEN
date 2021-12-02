@@ -185,7 +185,11 @@ void Ngaysinh:: nhapns(){
 	if (nam<0 || thang<0 || thang> 12 || ngay<0 || ngay> 31){
         	cout<<"Ngay sinh khong hop le. Moi ban nhap lai!!"<<endl;
 		nhapns();
-    	}
+    	}else{
+        	switch (thang){
+            	case 1:case 3: case 5: case 7:case 8:case 10:case 12:
+             	 ngaymax=31;
+             	 break;
 }
 void Ngaysinh:: inns(){
 	cout<<setw(2)<<left<<ngay<<"/"<<setw(2)<<left<<thang<<"/"<<setw(18)<<left<<nam;
