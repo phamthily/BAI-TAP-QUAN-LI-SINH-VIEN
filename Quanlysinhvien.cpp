@@ -203,6 +203,11 @@ void Ngaysinh:: nhapns(){
         if (ngay<=ngaymax){
             cout<<"Ngay hop le !"<<endl;
         }
+		 else{
+            cout<<"Ngay sinh khong hop le !.Moi ban nhap lai"<<endl;
+            nhapns();
+        }
+    }
 }
 void Ngaysinh:: inns(){
 	cout<<setw(2)<<left<<ngay<<"/"<<setw(2)<<left<<thang<<"/"<<setw(18)<<left<<nam;
