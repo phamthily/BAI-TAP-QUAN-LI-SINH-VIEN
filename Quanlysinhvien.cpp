@@ -181,6 +181,7 @@ void Ngaysinh:: nhapns(){
 	cin>>thang;
 	cout<<"Nhap nam :";
 	cin>>nam;
+	int ngaymax;
 }
 void Ngaysinh:: inns(){
 	cout<<setw(2)<<left<<ngay<<"/"<<setw(2)<<left<<thang<<"/"<<setw(18)<<left<<nam;
