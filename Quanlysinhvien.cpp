@@ -199,6 +199,10 @@ void Ngaysinh:: nhapns(){
 		 case 4:case 6:case 9:case 11:
                 ngaymax=30;
                 break;
+	 }
+        if (ngay<=ngaymax){
+            cout<<"Ngay hop le !"<<endl;
+        }
 }
 void Ngaysinh:: inns(){
 	cout<<setw(2)<<left<<ngay<<"/"<<setw(2)<<left<<thang<<"/"<<setw(18)<<left<<nam;
