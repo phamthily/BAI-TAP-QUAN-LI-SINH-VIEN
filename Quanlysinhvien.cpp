@@ -190,6 +190,12 @@ void Ngaysinh:: nhapns(){
             	case 1:case 3: case 5: case 7:case 8:case 10:case 12:
              	 ngaymax=31;
              	 break;
+		case 2:
+                if((nam%4==0 && nam%100!=0)||(nam%400==0))
+                    ngaymax=29;
+                else 
+                    ngaymax=28;
+                break;
 }
 void Ngaysinh:: inns(){
 	cout<<setw(2)<<left<<ngay<<"/"<<setw(2)<<left<<thang<<"/"<<setw(18)<<left<<nam;
